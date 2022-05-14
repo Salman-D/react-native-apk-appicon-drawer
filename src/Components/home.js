@@ -1,8 +1,8 @@
 import React from 'react'
 import {View,Text,TextInput,ScrollView,TouchableOpacity,FlatList,Button} from 'react-native'
-// import { useEffect,useState } from 'react'
-//   import auth from '@react-native-firebase/auth';
-//   import firestore from '@react-native-firebase/firestore';
+import { useEffect,useState } from 'react'
+  import auth from '@react-native-firebase/auth';
+  import firestore from '@react-native-firebase/firestore';
 
 // const storeData = "https://fakestoreapi.com/products?limit=5";
   
@@ -23,38 +23,38 @@ export default function App(){
   //     setStore(item)})
   // },[])
 
-// const signup =()=>{
-// auth()
-//   .createUserWithEmailAndPassword('i@gmail.com', 'SuperSecretPassword!')
-//   .then((data) => {
-//     console.log('User account created & signed in!');
-//     console.log(data.user.uid);
-//     const usersCollection = firestore().collection('Users');
-//     var obj ={
-//       name:'Usman',
-//       gmail:'i@gmail.com',
-//       password:"1234567",
-//       uid:data.user.uid,
-//     }
-//     usersCollection.doc(data.user.uid).set(obj);
-//   })
-//   .catch(error => {
-//     if (error.code === 'auth/email-already-in-use') {
-//       console.log('That email address is already in use!');
-//     }
+const signup =()=>{
+auth()
+  .createUserWithEmailAndPassword('ij@gmail.com', 'SuperSecretPassword!')
+  .then((data) => {
+    console.warn('User account created & signed in!');
+    console.warn(data.user.uid);
+    const usersCollection = firestore().collection('Users');
+    var obj ={
+      name:'Usman',
+      gmail:'i@gmail.com',
+      password:"1234567",
+      uid:data.user.uid,
+    }
+    usersCollection.doc(data.user.uid).set(obj);
+  })
+  .catch(error => {
+    if (error.code === 'auth/email-already-in-use') {
+      console.warn('That email address is already in use!');
+    }
 
-//     if (error.code === 'auth/invalid-email') {
-//       console.log('That email address is invalid!');
-//     }
+    if (error.code === 'auth/invalid-email') {
+      console.warn('That email address is invalid!');
+    }
 
-//     console.error(error);
-//   });
-// }
+    console.error(error);
+  });
+}
   return(
 
       <View style={{ flex: 1 }}>
           <Text>Home</Text>
-       {/* <Button onPress={()=>signup()} title='Signup'></Button> */}
+       <Button onPress={()=>signup()} title='Signup'></Button>
       </View>    
     // <ScrollView>
     // <View style={{flex:1}}>
